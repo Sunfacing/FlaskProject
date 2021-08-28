@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Creation</title>
+    </head>
+    <body>
+        {{ msg }}
+        <form  action='/admin/product' method='post' enctype="multipart/form-data" autocomplete="off">
+            <fieldset>
+                <h2>Basic Info</h2>
+                <label for='title'> Title: </label><br>
+                <input type='text' name='title' id='title' required><br>
+
+                <label for='description'> Description: </label><br>
+                <input type='text' name='description' id='description' required ><br>
+
+                <label for='price'> Price: </label><br>
+                <input type='number' name='price' id='price'  min="0" required><br>
+
+                <label for='texture'> Texture: </label><br>
+                <input type='text' name='texture' id='texture' required ><br>
+
+                <label for='wash'> Wash: </label><br>
+                <input type='text' name='wash' id='wash' required ><br>
+
+                <label for='place'> Place: </label><br>
+                <input type='text' name='place' id='place' required ><br>
+
+                <label for='note'> Note: </label><br>
+                <input type='text' name='note' id='note' required ><br>
+
+                <label for='story'> Story: </label><br>
+                <textarea name='story' id='story' required ></textarea><br>
+
+            </fieldset>
+            <fieldset>
+                <h2>Colors and Stocks</h2>
+                <div id='feature' class='features'>
+                    <div class=color>
+                        <label for='color0'> Color: </label>
+                        <input type='text' name='color0' id='color0'>
+
+                        <label for='Hex code0'> Hex code: </label>
+                        <input type='text' name='Hex code0' id='Hex code0'>
+     
+                        <label for='size0'> Size: </label>
+                        <select name='size0' id='size0' required>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>   
+
+                        <label for='stock0'> Stock: </label>
+                        <input type='number' name='stock0' id='stock0' min="0">
+                        <input type='button' value="Discard" id=0 onclick="deleteVariant()"></button>
+                    </div> 
+                </div>    
+                <input type='button' value="Add Variant" onclick="addVariant()"></button>
+            </fieldset> 
+
+            <fieldset>
+                <h2>Image</h2>
+                <label for='main_image'> Main Image: </label>
+                <input type='file' name='main_img[]' id='main_image' multiple>
+
+                <label for='image'> Image(Multiple Available): </label>
+                <input type='file' name='imgs[]' id='image' multiple>
+            </fieldset>
+
+            <input type="submit" value="Create Product">   
+        </form>
+        
+            
+        
+        <script src="{{url_for('static', filename='script.js')}}"></script>
+    </body>
+</html>
